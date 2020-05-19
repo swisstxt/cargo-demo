@@ -1,0 +1,18 @@
+#########
+# REDIS #
+#########
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  namespace: cargo-demo
+  labels:
+    app: redis
+spec:
+  ports:
+  - name: "6379"
+    port: 6379
+    targetPort: 6379
+  selector:
+    app: redis
