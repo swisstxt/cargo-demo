@@ -1,0 +1,30 @@
+---
+# A Deployment provides declarative updates for Pods and ReplicaSets.
+# So it describes Pods and ReplicaSets at once.
+# A Deployment can create and destroy Pods dynamically.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cargo-demo                        # The deployment is named cargo-demo
+  namespace: cargo-demo                   # Define the namespace for this deployment
+  labels:
+    app: cargo-demo                       # You can set multiple labels
+spec:
+  replicas: 1                            # Specifies the number of desired Pods
+  selector:                              # Specifies how the Deployment finds which Pod to manage
+    matchLabels:
+      app: cargo-demo                     # Must match with spec.template.metadata.labels
+  strategy:
+    type: RollingUpdate                  # support running multiple versions of an application
+  template:                              # The spec.template has the same schema as a POD and describes a POD
+    metadata:
+      labels:
+        app: cargo-demo                   # Pod label
+    spec:
+      containers:
+      - image: swisstxt/cargo-demo:latest   # Which image should be used
+        imagePullPolicy: Always
+        name: cargo-demo
+        ports:
+        - containerPort: 8088

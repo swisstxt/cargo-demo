@@ -1,0 +1,15 @@
+---
+# Kubernetes supports multiple virtual clusters backed by the same physical cluster. These virtual clusters are called namespaces.
+# Think of it as a virtual cluster in the cluster. Some namespace characteristics:
+# - Names of resources need to be unique within a namespace
+# - Namespace cannot be nested
+# - Each resource can only be in one namespace
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cargo-demo         # Namespace name
+  labels:
+    name: cargo-demo       # You can set multiple labels
+    owner: john.doe
+    team: cloud-services   # Permissions can be set dynamically based on namespace labels
