@@ -28,3 +28,10 @@ spec:
         name: cargo-demo
         ports:
         - containerPort: 8088
+        resources:
+          requests:
+            memory: 20Mi
+            cpu: 100m
+          limits:
+            memory: 200Mi
+            cpu: 250m
