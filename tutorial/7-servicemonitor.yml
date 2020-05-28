@@ -1,4 +1,7 @@
 ---
+
+# A ServiceMonitor describes the set of targets to be monitored by Prometheus.
+
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
@@ -9,6 +12,6 @@ spec:
     matchLabels:
       app: cargo-demo
   endpoints:
-  - port: http
-    path: /metrics
-    interval: 5m
+  - port: http                            # Our app exposes metrics on port named http
+    path: /metrics                        # Path where the endpoint is exposed
+    interval: 5m                          # scraping interval for prometheus

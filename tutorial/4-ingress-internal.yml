@@ -5,6 +5,9 @@
 # to a Service. Cargo is using NGINX Ingress Controller
 # Configures a load balancer or proxy server
 
+# ! Use this file if your cluster is only internally reachable, meaning it has a cargo.stxt.media.int ending.
+# It will secure your website with an internal certificate.
+
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:

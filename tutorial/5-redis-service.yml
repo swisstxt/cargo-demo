@@ -1,18 +1,18 @@
-#########
-# REDIS #
-#########
 ---
+# For description of a service, see 3-service.yml
+# Here we create a service to be able to connect to the redis database.
+
 apiVersion: v1
 kind: Service
 metadata:
   name: redis
-  namespace: cargo-demo
+  namespace: cargo-demo           # We put everything in the same namespace
   labels:
     app: redis
 spec:
   ports:
-  - name: "6379"
-    port: 6379
-    targetPort: 6379
+  - name: "redis"                 # You can put whatever name you wan here.
+    port: 6379                    # Incoming Port
+    targetPort: 6379              # The Redis Pod listens on Port 8088
   selector:
     app: redis

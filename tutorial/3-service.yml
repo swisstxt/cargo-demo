@@ -4,7 +4,7 @@
 # Each Pod gets its own IP address, however in a Deployment, the set of Pods running in one moment in time could be
 # different from the set of Pods running that application a moment later.
 # If some Pods (backends) provides functionality to other Pods (frontends), how do the frontends find out and keep
-# track of which IP address to connect to, so that the frontend can use the backend part of the workload. Thats is where
+# track of which IP address to connect to, so that the frontend can use the backend part of the workload. That is where
 # the service steps in.
 
 apiVersion: v1
@@ -18,7 +18,7 @@ spec:
   ports:
   - name: "http"
     port: 8088                # Incoming Port
-    targetPort: 8088          # The Pods listens on Port 8088
+    targetPort: 8088          # The Pod listens on Port 8088
   selector:
     app: cargo-demo           # Scans for pods that match this selector "cargo-demo"
   type: ClusterIP             # Exposes the Service on a cluster-internal IP.

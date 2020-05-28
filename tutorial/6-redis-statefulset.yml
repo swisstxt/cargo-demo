@@ -1,4 +1,12 @@
 ---
+# a StatefulSet manages Pods that are based on an identical container spec. Unlike a Deployment, a StatefulSet maintains a sticky identity for each of their Pods.
+# f you want to use storage volumes to provide persistence for your workload, you can use a StatefulSet as part of the solution
+# You can use stateful sets if you need
+# - stable, unique network identifiers
+# - stable, persistent storage
+# - ordered, graceful deployments and scaling
+# - ordered automated rolling updates
+
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -8,7 +16,7 @@ spec:
     matchLabels:
       app: redis            # has to match .spec.template.metadata.labels
   serviceName: "redis"
-  replicas: 1               # by default is 1
+  replicas: 1               # by default 1
   template:
     metadata:
       labels:

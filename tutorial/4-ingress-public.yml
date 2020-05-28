@@ -5,6 +5,8 @@
 # to a Service. Cargo is using NGINX Ingress Controller
 # Configures a load balancer or proxy server
 
+# ! Use this file if your cluster has a public ip address. This will configure a let's encrypt certificate for you
+
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
