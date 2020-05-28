@@ -3,6 +3,7 @@ from redis import Redis, RedisError         # Redis is used for the visits count
 import datetime                             # Used to show the actual time
 import os                                   # Used for the env variable (name)
 import socket                               # Needed to evaluate your hostname
+from prometheus_flask_exporter import PrometheusMetrics, Gauge
 
 # Connect to the Redis Database
 # This is not successful (and not needed) at the beginning of the tutorial
@@ -12,11 +13,15 @@ redis = Redis(host="redis", db=0, socket_connect_timeout=2, socket_timeout=2)
 # If you want to know more, head over to https://pythonhow.com/how-a-flask-app-works/
 app = Flask(__name__)
 
+metrics = PrometheusMetrics(app)
+g = Gauge("visit_counter", "Our custom visit counter")
+
 @app.route("/")
 def hello():
     # The visits counter will increase the db value everytime it is called
     try:
         visits = redis.incr("counter")
+        g.set(float(visits))
     # Instead of throwing an error, we will show the string below when we cannot connect to redis
     # so the program does not termintate when redis is not available
     except RedisError:
