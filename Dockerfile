@@ -17,4 +17,4 @@ EXPOSE 8088
 ENV NAME World
 
 # Run app.py when the container launches
-CMD ["/app/venv/bin/python", "app.py"]
+CMD ["python", "app.py"]
