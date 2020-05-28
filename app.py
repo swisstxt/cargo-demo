@@ -7,7 +7,13 @@ from prometheus_flask_exporter import PrometheusMetrics, Gauge
 
 # Connect to the Redis Database
 # This is not successful (and not needed) at the beginning of the tutorial
-redis = Redis(host="redis", db=0, socket_connect_timeout=2, socket_timeout=2)
+redis = Redis(
+    host=os.getenv("REDIS_ADDR", "redis"),
+    port=int(os.getenv("REDIS_PORT", 6379)),
+    db=0,
+    socket_connect_timeout=2,
+    socket_timeout=2
+)
 
 # The follwing lines are needed to create a Flask application. We won't dive deeper here.
 # If you want to know more, head over to https://pythonhow.com/how-a-flask-app-works/
@@ -24,7 +30,8 @@ def hello():
         g.set(float(visits))
     # Instead of throwing an error, we will show the string below when we cannot connect to redis
     # so the program does not termintate when redis is not available
-    except RedisError:
+    except RedisError as error:
+        app.logger.warning(error)
         visits = "<i>cannot connect to Redis, counter disabled</i>"
 
     # get the actual time
@@ -39,7 +46,12 @@ def hello():
            "<b>Visits:</b> {visits}<br/>"
 
     # Allocate the right values to the respective variables
-    return html.format(name=os.getenv("NAME", "world"), hostname=socket.gethostname(), visits=visits, t_now=t_now)
+    return html.format(
+        name=os.getenv("NAME", "world"),
+        hostname=socket.gethostname(),
+        visits=visits,
+        t_now=t_now
+    )
 
 # This is the application entry point
 if __name__ == "__main__":
