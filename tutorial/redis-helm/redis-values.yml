@@ -1,0 +1,37 @@
+haproxy:
+  enabled: true
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      interval: 30s
+
+redis:
+  resources:
+    requests:
+      memory: 200Mi
+      cpu: 100m
+    limits:
+      memory: 700Mi
+      cpu: 250m
+
+sentinel:
+  resources:
+    requests:
+      memory: 200Mi
+      cpu: 100m
+    limits:
+      memory: 200Mi
+      cpu: 250m
+
+exporter:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    interval: 30s
+
+auth: false
+
+persistentVolume:
+  enabled: true
+  storageClass: nas-perf

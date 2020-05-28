@@ -1,0 +1,10 @@
+spec:
+  template:
+    spec:
+      containers:
+      - name: cargo-demo
+        env:
+        - name: REDIS_ADDR
+          value: "demo-redis-redis-ha"
+        - name: REDIS_PORT
+          value: "6379"
