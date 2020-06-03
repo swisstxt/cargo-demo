@@ -1,5 +1,4 @@
 ---
-
 # A ServiceMonitor describes the set of targets to be monitored by Prometheus.
 
 apiVersion: monitoring.coreos.com/v1

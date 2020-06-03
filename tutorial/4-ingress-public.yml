@@ -22,13 +22,13 @@ metadata:
 spec:
   tls:                                                        # The tls section defines which certificate is needed
   - hosts:
-    - cargo-demo.cargo-demo.swisstxt.ch
-    secretName: cargo-demo.cargo-demo.swisstxt.ch-letsencrypt # and where it's saved and loaded as a secret
+    - cargo-demo1.cargo-purple.swisstxt.ch
+    secretName: cargo-demo1.cargo-purple.swisstxt.ch-letsencrypt # and where it's saved and loaded as a secret
   rules:
-  - host: cargo-demo.cargo-demo.swisstxt.ch                   # ! Please adapt this to your settings!
+  - host: cargo-demo1.cargo-purple.swisstxt.ch                   # ! Please adapt this to your settings!
     http:
       paths:
-      - path: /                                               #
+      - path: /                                               # The path must match the content of an incoming request
         backend:                                              # A backend is a combination of Service and port names
           serviceName: cargo-demo                             # Connect to the cargo-demo Service ...
           servicePort: 8088                                   # ... on Port 8088

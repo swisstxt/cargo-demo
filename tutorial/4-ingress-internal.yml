@@ -19,10 +19,10 @@ metadata:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"    # Advise to redirect all HTTP Traffic to HTTPS
 spec:
   rules:
-  - host: cargo-demo.cargo-demo.cargo.stxt.media.int          # ! Please adapt this to your settings!
+  - host: cargo-demo1.cargo-purple.cargo.stxt.media.int          # ! Please adapt this to your settings!
     http:
       paths:
-      - path: /                                               #
+      - path: /                                               # The path must match the content of an incoming request
         backend:                                              # A backend is a combination of Service and port names
           serviceName: cargo-demo                             # Connect to the cargo-demo Service ...
           servicePort: 8088                                   # ... on Port 8088

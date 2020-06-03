@@ -6,21 +6,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cargo-demo                        # The deployment is named cargo-demo
-  namespace: cargo-demo                   # Define the namespace for this deployment
+  name: cargo-demo                          # The deployment is named cargo-demo
+  namespace: cargo-demo                     # Define the namespace for this deployment
   labels:
-    app: cargo-demo                       # You can set multiple labels
+    app: cargo-demo                         # You can set multiple labels
 spec:
-  replicas: 1                            # Specifies the number of desired Pods
-  selector:                              # Specifies how the Deployment finds which Pod to manage
+  replicas: 1                               # Specifies the number of desired Pods
+  selector:                                 # Specifies how the Deployment finds which Pod to manage
     matchLabels:
-      app: cargo-demo                     # Must match with spec.template.metadata.labels
+      app: cargo-demo                       # Must match with spec.template.metadata.labels
   strategy:
-    type: RollingUpdate                  # support running multiple versions of an application
-  template:                              # The spec.template has the same schema as a POD and describes a POD
+    type: RollingUpdate                     # support running multiple versions of an application
+  template:                                 # The spec.template has the same schema as a POD and describes a POD
     metadata:
       labels:
-        app: cargo-demo                   # Pod label
+        app: cargo-demo                     # Pod label
     spec:
       containers:
       - image: swisstxt/cargo-demo:latest   # Which image should be used
@@ -29,9 +29,9 @@ spec:
         ports:
         - containerPort: 8088
         resources:
-          requests:
-            memory: 20Mi
-            cpu: 100m
-          limits:
-            memory: 200Mi
-            cpu: 250m
+          requests:                         # requests will make sure the pod is deployed on a node that has ...
+            memory: 20Mi                    # 20Mi memory and ...
+            cpu: 100m                       # 100m CPU available.
+          limits:                           # This pod is not allowed to use more than ...
+            memory: 200Mi                   # 200Mi memory and ...
+            cpu: 250m                       # 250m CPU

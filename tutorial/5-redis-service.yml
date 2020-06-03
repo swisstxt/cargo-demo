@@ -13,6 +13,6 @@ spec:
   ports:
   - name: "redis"                 # You can put whatever name you wan here.
     port: 6379                    # Incoming Port
-    targetPort: 6379              # The Redis Pod listens on Port 8088
+    targetPort: 6379              # The Redis Pod listens on Port 6379
   selector:
     app: redis

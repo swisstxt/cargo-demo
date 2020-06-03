@@ -17,8 +17,8 @@ metadata:
 spec:
   ports:
   - name: "http"
-    port: 8088                # Incoming Port
-    targetPort: 8088          # The Pod listens on Port 8088
+    port: 8088                 # Incoming Port
+    targetPort: 8088           # The Pod listens on Port 8088
   selector:
-    app: cargo-demo           # Scans for pods that match this selector "cargo-demo"
-  type: ClusterIP             # Exposes the Service on a cluster-internal IP.
+    app: cargo-demo            # Scans for pods that match this selector "cargo-demo"
+  type: ClusterIP              # Exposes the Service on a cluster-internal IP.

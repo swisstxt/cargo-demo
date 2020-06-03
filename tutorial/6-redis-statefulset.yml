@@ -14,15 +14,15 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: redis            # has to match .spec.template.metadata.labels
+      app: redis                                # has to match .spec.template.metadata.labels
   serviceName: "redis"
-  replicas: 1               # by default 1
+  replicas: 1                                   # by default 1
   template:
     metadata:
       labels:
-        app: redis          # has to match .spec.selector.matchLabels
+        app: redis                              # has to match .spec.selector.matchLabels
     spec:
-      terminationGracePeriodSeconds: 10
+      terminationGracePeriodSeconds: 10         # Wait 10 seconds for a succesful shutdown
       containers:
       - name: redis
         image: bitnami/redis:5.0.7
@@ -32,18 +32,18 @@ spec:
         ports:
         - containerPort: 6379
         resources:
-          requests:
-            memory: 5Mi
-            cpu: 5m
-          limits:
-            memory: 50Mi
-            cpu: 50m
+          requests:                           # requests will make sure the pod is deployed on a node that has ...
+            memory: 5Mi                       # 20Mi memory and ...
+            cpu: 5m                           # 100m CPU available.
+          limits:                             # This pod is not allowed to use more than ...
+            memory: 50Mi                      # 200Mi memory and ...
+            cpu: 50m                          # 250m CPU
   volumeClaimTemplates:
   - metadata:
       name: redis
     spec:
-      accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "nas-perf"
+      accessModes: [ "ReadWriteOnce" ]         # Chose one of the possible access modes
+      storageClassName: "nas-perf"             # There are 4 different storage classes available (see docu)
       resources:
         requests:
-          storage: 1Gi
+          storage: 1Gi                         # Size of the PVC
