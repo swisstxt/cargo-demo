@@ -8,5 +8,5 @@ To execute the demo and learn more about the Cargo Cluster:
    ```shell script
    git clone git@github.com:swisstxt/cargo-demo.git
    ```
-2. head over to the [Documentation](https://swisstxt.gitbook.io/cargo/-LWqE95Oa4sq9OoeeG6D/tutorials/00.-prepare-enviroment) and
+2. head over to the [Documentation](https://docs.swisstxt.ch/cargo/tutorials/00.-prepare-enviroment) and
 start the tutorial.
