@@ -8,8 +8,8 @@ from prometheus_flask_exporter import PrometheusMetrics, Gauge
 # Connect to the Redis Database
 # This is not successful (and not needed) at the beginning of the tutorial
 redis = Redis(
-    host=os.getenv("REDIS_ADDR", "redis"),
-    port=os.getenv("REDIS_PORT", "6379"),
+    host=os.getenv("DEMO_REDIS_ADDR", "redis"),
+    port=os.getenv("DEMO_REDIS_PORT", "6379"),
     db=0,
     socket_connect_timeout=2,
     socket_timeout=2
