@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+Flask = "*"
+redis = "*"
+prometheus-flask-exporter = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
