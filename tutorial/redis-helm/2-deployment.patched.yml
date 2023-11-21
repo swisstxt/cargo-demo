@@ -4,7 +4,7 @@ spec:
       containers:
       - name: cargo-demo
         env:
-        - name: REDIS_ADDR
-          value: "demo-redis-redis-ha"
-        - name: REDIS_PORT
+        - name: DEMO_REDIS_ADDR
+          value: "demo-redis-redis-ha-haproxy"
+        - name: DEMO_REDIS_PORT
           value: "6379"
