@@ -19,5 +19,8 @@ EXPOSE 8088
 # Define environment variable
 ENV NAME World
 
+# Change User to a non-root one to comply with Security Policies on Cargo
+USER 1001
+
 # Run app.py when the container launches
 CMD ["python", "app.py"]
