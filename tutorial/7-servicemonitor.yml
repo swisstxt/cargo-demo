@@ -13,4 +13,4 @@ spec:
   endpoints:
   - port: http                            # Our app exposes metrics on port named http
     path: /metrics                        # Path where the endpoint is exposed
-    interval: 5m                          # scraping interval for prometheus
+    interval: 10s                         # scraping interval for prometheus
