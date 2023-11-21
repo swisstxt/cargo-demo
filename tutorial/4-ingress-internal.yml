@@ -8,7 +8,7 @@
 # ! Use this file if your cluster is only internally reachable, meaning it has a cargo.stxt.media.int ending.
 # It will secure your website with an internal certificate.
 
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: cargo-demo-ingress                                    # Ingress name
@@ -23,6 +23,9 @@ spec:
     http:
       paths:
       - path: /                                               # The path must match the content of an incoming request
+        pathType: Prefix                                      # Match all paths (with / prefix)
         backend:                                              # A backend is a combination of Service and port names
-          serviceName: cargo-demo                             # Connect to the cargo-demo Service ...
-          servicePort: 8088                                   # ... on Port 8088
+          service:
+            name: cargo-demo                                  # Connect to the cargo-demo Service ...
+            port:
+              number: 8088                                    # ... on Port 8088
